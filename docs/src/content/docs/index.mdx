@@ -1,0 +1,38 @@
+---
+title: Authloom
+description: An open-source authentication and authorization library, written once in Rust and usable from any language.
+hero:
+  tagline: Authentication and authorization, written once in Rust and usable from any language.
+  actions:
+    - text: Get started
+      link: guides/getting-started/
+      icon: right-arrow
+    - text: Read the roadmap
+      link: project/roadmap/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+:::caution[Early development]
+Authloom is in Phase 1 (foundations). Nothing here is ready for production use yet.
+:::
+
+<CardGrid>
+  <Card title="One core, every language" icon="puzzle">
+    Every security decision lives in a single Rust core. Thin adapters bring it
+    to Node.js, Python and more, using each language's own idioms.
+  </Card>
+  <Card title="Adapters can't weaken it" icon="approve-check">
+    The core is sans-IO and makes the decisions itself. A shared conformance
+    suite checks that every adapter behaves the same way on security.
+  </Card>
+  <Card title="Secure by default" icon="setting">
+    The safe choice needs no configuration. Anything that weakens security has
+    to be turned on explicitly and says so in its name.
+  </Card>
+  <Card title="Checked against standards" icon="document">
+    Acceptance criteria come from OWASP ASVS, NIST SP 800-63B and the relevant
+    RFCs, with a threat model for every feature.
+  </Card>
+</CardGrid>
