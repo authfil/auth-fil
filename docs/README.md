@@ -20,7 +20,7 @@ For an auth library, documentation is part of the security surface. A misleading
 
 | What | Where | Audience |
 |---|---|---|
-| Guides, project pages, threat models, decisions | `docs/src/content/docs/` | Users and contributors |
+| Site pages, threat models, decisions | `docs/src/content/docs/` | Users and contributors |
 | API reference | Doc comments in the code, generated into the site | Users |
 | Project overview | `README.md` | First-time visitors |
 | Contribution process | `CONTRIBUTING.md` | Contributors |
@@ -98,11 +98,15 @@ description: How Authloom creates, rotates and revokes server-side sessions.
 
 | Section | For |
 |---|---|
-| `guides/` | Task-focused pages: how to do something |
-| `project/` | Roadmap, research, credits, sponsors |
+| `get-started/` | The first pages a new reader needs |
+| `concepts/` | How Authloom works and why, one idea per page |
+| `adapters/` | An overview, then one page per language adapter |
 | `security/` | Threat models and security design |
-| `decisions/` | Architecture decision records |
 | `reference/` | Overview of the API reference; the rest is generated |
+| `project/` | Roadmap, contributing, conventions, research, credits, sponsors |
+| `decisions/` | Architecture decision records |
+
+The full layout of the repository is on the [directory conventions](src/content/docs/project/directory-conventions.md) page.
 
 ### Links
 

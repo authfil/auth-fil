@@ -1,0 +1,27 @@
+#!/bin/sh
+# Runs the formatting, clippy and dependency checks CI would fail on, over the
+# whole workspace, before anything leaves your machine.
+# Installed with `make hooks`. Skip once with `git push --no-verify`; CI runs
+# the same checks.
+set -e
+
+# Nothing to check when the push only deletes remote branches.
+pushing=false
+while read -r _local_ref local_sha _remote_ref _remote_sha; do
+    case "$local_sha" in
+        *[!0]*) pushing=true ;;
+    esac
+done
+[ "$pushing" = true ] || exit 0
+
+if ! cargo deny --version >/dev/null 2>&1; then
+    echo "error: cargo-deny is not installed. Run \`make tools\`." >&2
+    exit 1
+fi
+
+make --no-print-directory fmt-check || {
+    echo "error: formatting differs. Run \`make fmt\` and commit the result." >&2
+    exit 1
+}
+make --no-print-directory lint
+make --no-print-directory deny

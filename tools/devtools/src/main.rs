@@ -26,7 +26,8 @@ Interactive:
 Checks:
   lint-commit <file>   Check a commit message file (used by the commit-msg hook)
   lint-range <range>   Check every non-merge commit in a range, e.g. origin/main..HEAD
-  lint-name <name>     Check a branch name or pull request title
+  lint-name <name>     Check a branch name
+  lint-title <title>   Check a pull request title (a Conventional Commit header)
 
 Setup:
   install-hooks        Use the repository's git hooks in .githooks/";
@@ -39,6 +40,11 @@ const NAME_HELP: &str = "\
 Format:  ISSUE-XXXX/TYPE/short-descriptive-title    e.g. ISSUE-0001/FEATURE/add-session-rotation
 Run `make branch` for a guided prompt. The rules are in CONTRIBUTING.md under \"Branches and pull requests\".";
 
+const TITLE_HELP: &str = "\
+Format:  type(scope): description    e.g. feat(core): add session rotation
+Pull request titles use the Conventional Commits format, not the branch name.
+The rules are in CONTRIBUTING.md under \"Branches and pull requests\".";
+
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let args: Vec<&str> = args.iter().map(String::as_str).collect();
@@ -49,6 +55,7 @@ fn main() -> ExitCode {
         ["lint-commit", file] => lint_commit_file(file),
         ["lint-range", range] => lint_range(range),
         ["lint-name", name] => lint_name(name),
+        ["lint-title", title] => lint_title(title),
         ["install-hooks"] => install_hooks(),
         _ => {
             eprintln!("{USAGE}");
@@ -107,6 +114,16 @@ fn lint_name(name: &str) -> Result<(), String> {
     naming::parse(name)
         .map(drop)
         .map_err(|errors| report(&format!("name `{name}`"), &errors, NAME_HELP))
+}
+
+fn lint_title(title: &str) -> Result<(), String> {
+    conventional::lint_title(title).map_err(|errors| {
+        report(
+            &format!("pull request title `{title}`"),
+            &errors,
+            TITLE_HELP,
+        )
+    })
 }
 
 fn install_hooks() -> Result<(), String> {

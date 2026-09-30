@@ -1,5 +1,6 @@
 <!--
-Title must be ISSUE-XXXX/TYPE/short-descriptive-title (run `make branch`).
+Title must be a Conventional Commit, e.g. feat(core): add session rotation.
+Branches are named ISSUE-XXXX/TYPE/short-descriptive-title (run `make branch`).
 CI checks the title and every commit against CONTRIBUTING.md.
 -->
 

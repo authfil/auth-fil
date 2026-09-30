@@ -27,6 +27,12 @@ export default defineConfig({
   site: process.env.DOCS_SITE_URL,
   base: process.env.DOCS_BASE || '/',
   trailingSlash: 'always',
+  // Pages that moved when the site was reorganised, so old links keep working.
+  redirects: {
+    '/guides/getting-started/': '/get-started/development-setup/',
+    '/guides/architecture/': '/concepts/architecture/',
+    '/guides/contributing/': '/project/contributing/',
+  },
   integrations: [
     mermaid({
       theme: 'neutral',
@@ -60,6 +66,17 @@ export default defineConfig({
       description:
         'An open-source authentication and authorization library, written once in Rust and usable from any language.',
       lastUpdated: false,
+      logo: {
+        src: './src/assets/logo.png',
+        alt: 'Auth Loom',
+      },
+      favicon: '/favicon.png',
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/authloom/auth-loom' },
+      ],
+      editLink: {
+        baseUrl: 'https://github.com/authloom/auth-loom/edit/main/docs/',
+      },
       customCss: ['./src/styles/mermaid-zoom.css', './src/styles/layout.css'],
       components: {
         Head: './src/components/Head.astro',
@@ -77,22 +94,36 @@ export default defineConfig({
             }),
           ]
         : [],
+      // Ordered like a reader's path through the docs: start, understand,
+      // pick a language, then look things up.
       sidebar: [
         {
-          label: 'Start here',
-          items: ['guides/getting-started', 'guides/architecture', 'guides/contributing'],
+          label: 'Get started',
+          items: ['get-started/introduction', 'get-started/development-setup'],
         },
         {
-          label: 'Project',
-          items: ['project/roadmap', 'project/research', 'project/credits', 'project/sponsors'],
+          label: 'Concepts',
+          items: [
+            'concepts/architecture',
+            'concepts/sans-io-core',
+            'concepts/crypto',
+            'concepts/conformance',
+          ],
+        },
+        {
+          label: 'Adapters',
+          items: [
+            { label: 'Overview', slug: 'adapters' },
+            'adapters/node',
+            'adapters/python',
+            'adapters/go',
+            'adapters/java',
+            'adapters/rust',
+          ],
         },
         {
           label: 'Security',
           items: ['security/threat-models'],
-        },
-        {
-          label: 'Decisions',
-          items: [{ autogenerate: { directory: 'decisions' } }],
         },
         {
           label: 'API reference',
@@ -110,6 +141,22 @@ export default defineConfig({
               : []),
             { label: 'Rust (rustdoc)', link: '/api/rust/authloom_core/' },
           ],
+        },
+        {
+          label: 'Project',
+          items: [
+            'project/roadmap',
+            'project/contributing',
+            'project/directory-conventions',
+            'project/research',
+            'project/credits',
+            'project/sponsors',
+          ],
+        },
+        {
+          label: 'Decisions',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'decisions' } }],
         },
       ],
     }),

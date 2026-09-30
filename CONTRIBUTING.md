@@ -14,7 +14,7 @@ You'll need Rust 1.85 or newer (edition 2024). For adapter work you'll also need
 
 ```sh
 make tools   # one-off: installs cargo-deny and cargo-fuzz
-make hooks   # one-off: checks your commit messages as you commit
+make hooks   # one-off: fmt and clippy before each commit, commit message checks, fmt, clippy and deny before each push
 make check   # formatting, clippy and tests
 make deny    # dependency advisories and licences
 ```
@@ -87,7 +87,7 @@ New dependencies are reviewed for maintenance status, `unsafe` usage, licence co
 
 ## Branches and pull requests
 
-Branches and pull request titles both use this format:
+Branches use this format:
 
 ```
 ISSUE-XXXX/TYPE/short-descriptive-title
@@ -113,7 +113,9 @@ For example, `ISSUE-0001/FEATURE/adding-python-adaptor-X-endpoint`.
 | `CHORE` | `chore` | Maintenance that fits nowhere else |
 | `REVERT` | `revert` | Reverting a previous change |
 
-Run **`make branch`** to create a correctly named branch. Use the branch name as the pull request title. CI checks the title.
+Run **`make branch`** to create a correctly named branch.
+
+Pull request titles are different: they use the [Conventional Commits](#commits) format, `type(scope): description`, for example `feat(core): add session rotation`. Pull requests are squash-merged, so the title becomes the commit on `main` that release-please reads to version and changelog the release. CI checks the title.
 
 Security fixes are the exception. They're developed privately in a security advisory, following [SECURITY.md](SECURITY.md), so that the branch name doesn't reveal the vulnerability.
 
@@ -137,11 +139,11 @@ type(scope): description
 
 Optional body explaining why the change was needed.
 
-Optional footers, e.g. BREAKING CHANGE: ... or Refs: #12
+Optional footers, e.g. BREAKING CHANGE: ... or Refs: https://github.com/authloom/auth-loom/issues/12
 ```
 
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore` or `revert` (see the table above).
-- **scope** (optional): the area changed, one of `core`, `crypto`, `node`, `python`, `conformance`, `docs`, `devtools`, `docker`, `ci`, `deps` or `repo`. Leave it out for cross-cutting changes.
+- **scope** (optional): the area changed, one of `core`, `crypto`, `node`, `python`, `go`, `java`, `rust`, `conformance`, `docs`, `devtools`, `docker`, `ci`, `deps` or `repo`. Leave it out for cross-cutting changes.
 - **description**: what the commit does, in the imperative mood and lowercase, with no full stop: `add session rotation`, not `Added session rotation.`
 - The header is at most 72 characters.
 - Mark a breaking change with `!` after the type or scope, and explain it in a `BREAKING CHANGE:` footer.
@@ -172,7 +174,7 @@ Run **`make commit`** instead of `git commit` for a guided prompt. It:
 - lists the staged files grouped by scope, and warns when a commit spans unrelated areas or is very large;
 - suggests the type from your branch name and the scope from the staged files;
 - checks the header as you type;
-- adds `Refs: #<issue>` from your branch name.
+- adds a `Refs:` footer linking the issue from your branch name, e.g. `Refs: https://github.com/authloom/auth-loom/issues/12`.
 
 Run `make lint-commits` to check your branch's commits the same way CI does.
 

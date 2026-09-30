@@ -108,6 +108,18 @@ pub const SCOPES: &[Scope] = &[
         description: "adapters/python",
     },
     Scope {
+        name: "go",
+        description: "adapters/go",
+    },
+    Scope {
+        name: "java",
+        description: "adapters/java",
+    },
+    Scope {
+        name: "rust",
+        description: "adapters/rust",
+    },
+    Scope {
         name: "conformance",
         description: "conformance/",
     },
@@ -145,6 +157,9 @@ pub fn scope_for_path(path: &str) -> &'static str {
         ("crates/authloom-crypto/", "crypto"),
         ("adapters/node/", "node"),
         ("adapters/python/", "python"),
+        ("adapters/go/", "go"),
+        ("adapters/java/", "java"),
+        ("adapters/rust/", "rust"),
         ("conformance/", "conformance"),
         ("docs/", "docs"),
         ("tools/devtools/", "devtools"),
@@ -209,6 +224,17 @@ pub fn lint(message: &str, mode: Mode) -> Result<(), Vec<String>> {
     if lines.next().is_some_and(|line| !line.is_empty()) {
         errors.push("leave a blank line between the header and the body".into());
     }
+    if errors.is_empty() {
+        Ok(())
+    } else {
+        Err(errors)
+    }
+}
+
+/// Check a pull request title. It becomes the squash commit header on
+/// `main`, so it follows the same header rules as a commit.
+pub fn lint_title(title: &str) -> Result<(), Vec<String>> {
+    let errors = lint_header(title);
     if errors.is_empty() {
         Ok(())
     } else {
@@ -305,6 +331,13 @@ mod tests {
         ok("feat(python)!: rename verify to verify_password");
         ok("docs: explain PKCE in the OAuth guide");
         ok("feat(core): add OAuth state parameter");
+    }
+
+    #[test]
+    fn pull_request_titles_follow_the_header_rules() {
+        assert_eq!(lint_title("feat(core): add session rotation"), Ok(()));
+        assert!(lint_title("ISSUE-0001/FEATURE/add-session-rotation").is_err());
+        assert!(lint_title("feat(core): Add session rotation").is_err());
     }
 
     #[test]

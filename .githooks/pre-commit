@@ -1,0 +1,16 @@
+#!/bin/sh
+# Runs the fast checks CI would fail on: formatting and clippy.
+# Installed with `make hooks`. Skip once with `git commit --no-verify`; CI
+# runs the same checks.
+set -e
+
+# Nothing to check unless Rust files or manifests are staged.
+if ! git diff --cached --name-only | grep -qE '\.rs$|(^|/)Cargo\.(toml|lock)$'; then
+    exit 0
+fi
+
+cargo fmt --all --check || {
+    echo "error: formatting differs. Run \`make fmt\` and stage the result." >&2
+    exit 1
+}
+cargo clippy --workspace --all-targets --quiet -- -D warnings

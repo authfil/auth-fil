@@ -1,0 +1,80 @@
+---
+title: Development setup
+description: Set up a development environment for Authloom on your machine or in Docker.
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Authloom isn't published yet, so for now getting started means setting up a development environment. Everything runs through `make`, and `make help` lists the targets.
+
+## Set up
+
+<Tabs>
+<TabItem label="On your machine">
+
+<Steps>
+
+1. Install Rust 1.85 or newer.
+
+   Adapter work also needs that adapter's toolchain: Node.js (LTS), or Python 3.10+ with [uv](https://docs.astral.sh/uv/), or Go, or a JDK.
+
+2. Install the Rust dev tools. You only need to do this once.
+
+   ```sh
+   make tools
+   ```
+
+3. Install the git hooks. They run fmt and clippy before each commit, check your commit messages, and run fmt, clippy and cargo-deny before each push.
+
+   ```sh
+   make hooks
+   ```
+
+4. Build the workspace and run the checks every pull request must pass.
+
+   ```sh
+   make build
+   make check
+   ```
+
+</Steps>
+
+</TabItem>
+<TabItem label="In Docker">
+
+The dev image has the Rust, Node and Python toolchains, so you only need Docker.
+
+<Steps>
+
+1. Open a shell with the repository mounted at `/workspace`.
+
+   ```sh
+   make docker-shell
+   ```
+
+2. Run the pull request checks in the container.
+
+   ```sh
+   make docker-check
+   ```
+
+</Steps>
+
+</TabItem>
+</Tabs>
+
+## Run the docs locally
+
+```sh
+make docs-serve        # http://localhost:4321, reloads as you edit
+make docker-docs       # the same, from the dev container
+```
+
+The dev server regenerates the [API reference](../../reference/) whenever the Rust, TypeScript or Python sources change.
+
+## Next steps
+
+- Find your way around with the [directory conventions](../../project/directory-conventions/).
+- Read the [architecture](../../concepts/architecture/) overview.
+- Check the [roadmap](../../project/roadmap/) to see which phase we're in.
+- Read [how to contribute](../../project/contributing/).

@@ -1,6 +1,6 @@
 name: Conventions
 
-# Enforces the pull request naming and Conventional Commits rules from
+# Enforces the Conventional Commits rules for pull request titles and commits from
 # CONTRIBUTING.md. Local hooks can be skipped with --no-verify; this can't.
 
 on:
@@ -32,7 +32,7 @@ jobs:
       - name: Pull request title
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: target/debug/devtools lint-name "$PR_TITLE"
+        run: target/debug/devtools lint-title "$PR_TITLE"
 
       - name: Commit messages
         env:
