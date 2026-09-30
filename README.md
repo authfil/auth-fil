@@ -56,7 +56,7 @@ auth-loom/
 │   └── rust/              # Idiomatic Rust SDK over authloom-core
 ├── conformance/           # Shared black-box test suite every adapter must pass
 ├── tools/devtools/        # Branch and commit tooling: `make branch`, `make commit`
-├── .githooks/             # pre-commit (fmt, clippy) and commit-msg (Conventional Commits) hooks
+├── .githooks/             # pre-commit (fmt, clippy), commit-msg (Conventional Commits) and pre-push (fmt, clippy, deny) hooks
 ├── docs/                  # Docsite (Starlight): guides, roadmap, API reference
 │   └── src/content/docs/  # Hand-written pages: get started, concepts, adapters, security, project, decisions
 ├── CONTRIBUTING.md

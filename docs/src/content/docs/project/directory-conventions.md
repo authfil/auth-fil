@@ -22,7 +22,7 @@ auth-loom/
 ├── tools/devtools/         # make branch, make commit and the convention linters
 ├── docs/                   # This site (Starlight)
 │   └── src/content/docs/   # Hand-written pages
-├── .githooks/              # pre-commit and commit-msg hooks
+├── .githooks/              # pre-commit, commit-msg and pre-push hooks
 ├── .github/                # Workflows, issue and pull request templates
 ├── Cargo.toml              # Workspace members, shared versions and lints
 ├── deny.toml               # cargo-deny: advisories, licences, banned crates

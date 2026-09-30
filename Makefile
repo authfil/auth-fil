@@ -48,7 +48,7 @@ tools: ## Install the Rust dev tools used by other targets
 DEVTOOLS := $(CARGO) run --quiet --package authloom-devtools --
 
 .PHONY: hooks
-hooks: ## Install the git hooks (pre-commit checks, commit message lint)
+hooks: ## Install the git hooks (pre-commit checks, commit message lint, pre-push checks)
 	$(DEVTOOLS) install-hooks
 
 .PHONY: branch

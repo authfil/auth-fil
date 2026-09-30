@@ -14,7 +14,7 @@ You'll need Rust 1.85 or newer (edition 2024). For adapter work you'll also need
 
 ```sh
 make tools   # one-off: installs cargo-deny and cargo-fuzz
-make hooks   # one-off: runs fmt and clippy before each commit and checks your commit messages
+make hooks   # one-off: fmt and clippy before each commit, commit message checks, fmt, clippy and deny before each push
 make check   # formatting, clippy and tests
 make deny    # dependency advisories and licences
 ```
