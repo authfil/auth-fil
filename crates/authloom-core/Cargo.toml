@@ -1,0 +1,12 @@
+[package]
+name = "authloom-core"
+description = "Sans-IO core of Authloom: auth state machines and security decisions, with no I/O."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+authloom-crypto.workspace = true
+
+[lints]
+workspace = true
