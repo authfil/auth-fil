@@ -1,0 +1,4 @@
+{
+  "crates/authloom-core": "0.1.0",
+  "crates/authloom-crypto": "0.1.0"
+}

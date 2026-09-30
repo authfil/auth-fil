@@ -1,0 +1,41 @@
+name: Conventions
+
+# Enforces the pull request naming and Conventional Commits rules from
+# CONTRIBUTING.md. Local hooks can be skipped with --no-verify; this can't.
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: conventions-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Build devtools
+        run: cargo build --quiet --package authloom-devtools
+
+      # The title is passed through the environment, never interpolated into
+      # the script, because it is attacker-controlled input.
+      - name: Pull request title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: target/debug/devtools lint-name "$PR_TITLE"
+
+      - name: Commit messages
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: target/debug/devtools lint-range "$BASE_SHA..$HEAD_SHA"

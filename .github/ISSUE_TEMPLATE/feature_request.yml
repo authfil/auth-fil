@@ -1,0 +1,73 @@
+name: Feature request
+description: Propose a new feature or capability.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every change starts with an issue, so pull requests can be named after it. For security-relevant features, check the [roadmap](../../docs/src/content/docs/project/roadmap.md) and expect to agree on the design and threat model here before code is written.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - authloom-core
+        - authloom-crypto
+        - Node adapter
+        - Python adapter
+        - Go adapter
+        - Java adapter
+        - Rust adapter
+        - Conformance suite
+        - Docs site
+        - Devtools / tooling
+        - New language adapter
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: What's missing or painful today, and who's affected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What you'd like to happen. Link the spec (RFC/NIST/W3C) and OWASP Cheat Sheet if this is security-relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: A checklist of conditions this feature must meet to be considered done.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: security-relevant
+    attributes:
+      label: Is this security-relevant?
+      description: Any validation, expiry, comparison, policy or access-check logic belongs in authloom-core and needs a threat model.
+      options:
+        - label: Yes — this will need a threat model doc and attack-based tests before merge.
+        - label: No — this is adapter plumbing, tooling, or non-security behaviour.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false

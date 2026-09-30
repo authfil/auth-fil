@@ -1,0 +1,25 @@
+pre.mermaid[data-processed] {
+  cursor: zoom-in;
+}
+
+.mermaid-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: zoom-out;
+  padding: 2rem;
+}
+
+/* Mermaid sets an inline max-width on the SVG; override it so the viewBox scales up to fill the screen. */
+.mermaid-zoom-overlay svg {
+  max-width: none !important;
+  width: 95vw;
+  height: 90vh;
+  background: var(--sl-color-bg);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}

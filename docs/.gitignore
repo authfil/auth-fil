@@ -1,0 +1,7 @@
+dist/
+.astro/
+
+# Generated API reference: rebuilt from source on every dev and build run.
+public/api/
+src/content/docs/reference/typescript/
+src/content/docs/reference/python/

@@ -1,0 +1,30 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/authloom-core",
+    "crates/authloom-crypto",
+    "adapters/node",
+    "adapters/python",
+    "adapters/go",
+    "adapters/java",
+    "adapters/rust",
+    "tools/devtools",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+# Internal crates carry a version as well as a path so they can be published.
+[workspace.dependencies]
+authloom-core = { path = "crates/authloom-core", version = "0.1.0" }
+authloom-crypto = { path = "crates/authloom-crypto", version = "0.1.0" }
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[workspace.lints.clippy]
+dbg_macro = "deny"
+print_stdout = "deny"
+print_stderr = "deny"

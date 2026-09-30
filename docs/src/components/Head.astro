@@ -1,0 +1,18 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+<Default />
+
+<!-- Runs before first paint so a collapsed sidebar doesn't flash open. -->
+<script is:inline>
+  try {
+    if (localStorage.getItem('sl-sidebar-collapsed') === 'true') {
+      document.documentElement.setAttribute('data-sidebar-collapsed', '');
+    }
+  } catch {}
+</script>
+
+<script>
+  import '../scripts/mermaid-zoom.js';
+</script>

@@ -1,0 +1,9 @@
+.git
+target
+**/node_modules
+**/*.node
+**/__pycache__
+**/.venv
+docs/dist
+docs/.astro
+docs/public/api

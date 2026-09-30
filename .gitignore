@@ -1,0 +1,11 @@
+/target
+
+# Node adapter
+node_modules/
+*.node
+
+# Python adapter
+__pycache__/
+*.py[cod]
+.venv/
+*.so

@@ -1,0 +1,27 @@
+name: Release please
+
+# Maintains a standing "release PR" that accumulates version bumps and a
+# changelog from Conventional Commits merged to main. Merging that PR
+# creates the GitHub release and tag; publishing to a registry is a
+# separate, manual step for later.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-please-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
