@@ -53,7 +53,7 @@ auth-loom/
 │   └── python/            # Python bindings (PyO3)
 ├── conformance/           # Shared black-box test suite every adapter must pass
 ├── tools/devtools/        # Branch and commit tooling: `make branch`, `make commit`
-├── .githooks/             # commit-msg hook enforcing Conventional Commits
+├── .githooks/             # pre-commit (fmt, clippy) and commit-msg (Conventional Commits) hooks
 ├── docs/                  # Docsite (Starlight): guides, roadmap, API reference
 │   └── src/content/docs/  # Hand-written pages: guides, project, security, decisions
 ├── CONTRIBUTING.md

@@ -14,7 +14,7 @@ You'll need Rust 1.85 or newer (edition 2024). For adapter work you'll also need
 
 ```sh
 make tools   # one-off: installs cargo-deny and cargo-fuzz
-make hooks   # one-off: checks your commit messages as you commit
+make hooks   # one-off: runs fmt and clippy before each commit and checks your commit messages
 make check   # formatting, clippy and tests
 make deny    # dependency advisories and licences
 ```
@@ -87,7 +87,7 @@ New dependencies are reviewed for maintenance status, `unsafe` usage, licence co
 
 ## Branches and pull requests
 
-Branches and pull request titles both use this format:
+Branches use this format:
 
 ```
 ISSUE-XXXX/TYPE/short-descriptive-title
@@ -113,7 +113,9 @@ For example, `ISSUE-0001/FEATURE/adding-python-adaptor-X-endpoint`.
 | `CHORE` | `chore` | Maintenance that fits nowhere else |
 | `REVERT` | `revert` | Reverting a previous change |
 
-Run **`make branch`** to create a correctly named branch. Use the branch name as the pull request title. CI checks the title.
+Run **`make branch`** to create a correctly named branch.
+
+Pull request titles are different: they use the [Conventional Commits](#commits) format, `type(scope): description`, for example `feat(core): add session rotation`. Pull requests are squash-merged, so the title becomes the commit on `main` that release-please reads to version and changelog the release. CI checks the title.
 
 Security fixes are the exception. They're developed privately in a security advisory, following [SECURITY.md](SECURITY.md), so that the branch name doesn't reveal the vulnerability.
 
