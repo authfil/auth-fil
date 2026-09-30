@@ -1,0 +1,17 @@
+[package]
+name = "authloom-devtools"
+description = "Contributor tooling: branch naming, Conventional Commits and git hooks."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[[bin]]
+name = "devtools"
+path = "src/main.rs"
+
+[dependencies]
+inquire = { version = "0.9.4", features = ["editor"] }
+
+[lints]
+workspace = true
