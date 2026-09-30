@@ -1,0 +1,11 @@
+[package]
+name = "authloom-crypto"
+description = "Cryptographic building blocks for Authloom, wired from vetted crates."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true
