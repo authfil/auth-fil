@@ -13,7 +13,7 @@ The API reference is generated from the source code, including signatures and do
 | Go | The UniFFI-generated Go bindings | godoc |
 | Java | The JNI bindings' Javadoc comments | Javadoc |
 
-Most public items are written in Rust. Their `///` doc comments flow into all three references, so each item is documented once. See [writing API docs](../guides/contributing/#writing-api-docs).
+Most public items are written in Rust. Their `///` doc comments flow into all three references, so each item is documented once. See [writing API docs](../project/contributing/#writing-api-docs).
 
 ## Status
 

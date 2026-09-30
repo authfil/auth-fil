@@ -108,6 +108,18 @@ pub const SCOPES: &[Scope] = &[
         description: "adapters/python",
     },
     Scope {
+        name: "go",
+        description: "adapters/go",
+    },
+    Scope {
+        name: "java",
+        description: "adapters/java",
+    },
+    Scope {
+        name: "rust",
+        description: "adapters/rust",
+    },
+    Scope {
         name: "conformance",
         description: "conformance/",
     },
@@ -145,6 +157,9 @@ pub fn scope_for_path(path: &str) -> &'static str {
         ("crates/authloom-crypto/", "crypto"),
         ("adapters/node/", "node"),
         ("adapters/python/", "python"),
+        ("adapters/go/", "go"),
+        ("adapters/java/", "java"),
+        ("adapters/rust/", "rust"),
         ("conformance/", "conformance"),
         ("docs/", "docs"),
         ("tools/devtools/", "devtools"),

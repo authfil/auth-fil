@@ -143,7 +143,7 @@ Optional footers, e.g. BREAKING CHANGE: ... or Refs: #12
 ```
 
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore` or `revert` (see the table above).
-- **scope** (optional): the area changed, one of `core`, `crypto`, `node`, `python`, `conformance`, `docs`, `devtools`, `docker`, `ci`, `deps` or `repo`. Leave it out for cross-cutting changes.
+- **scope** (optional): the area changed, one of `core`, `crypto`, `node`, `python`, `go`, `java`, `rust`, `conformance`, `docs`, `devtools`, `docker`, `ci`, `deps` or `repo`. Leave it out for cross-cutting changes.
 - **description**: what the commit does, in the imperative mood and lowercase, with no full stop: `add session rotation`, not `Added session rotation.`
 - The header is at most 72 characters.
 - Mark a breaking change with `!` after the type or scope, and explain it in a `BREAKING CHANGE:` footer.

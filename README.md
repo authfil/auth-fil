@@ -50,12 +50,15 @@ auth-loom/
 │   └── authloom-crypto/   # Hashing, token generation, constant-time ops, secrets
 ├── adapters/
 │   ├── node/              # Node.js / TypeScript bindings (napi-rs)
-│   └── python/            # Python bindings (PyO3)
+│   ├── python/            # Python bindings (PyO3)
+│   ├── go/                # Go bindings (UniFFI)
+│   ├── java/              # Java bindings (JNI)
+│   └── rust/              # Idiomatic Rust SDK over authloom-core
 ├── conformance/           # Shared black-box test suite every adapter must pass
 ├── tools/devtools/        # Branch and commit tooling: `make branch`, `make commit`
 ├── .githooks/             # pre-commit (fmt, clippy) and commit-msg (Conventional Commits) hooks
 ├── docs/                  # Docsite (Starlight): guides, roadmap, API reference
-│   └── src/content/docs/  # Hand-written pages: guides, project, security, decisions
+│   └── src/content/docs/  # Hand-written pages: get started, concepts, adapters, security, project, decisions
 ├── CONTRIBUTING.md
 ├── SECURITY.md
 └── LICENSE
