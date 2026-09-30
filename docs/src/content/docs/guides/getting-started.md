@@ -11,7 +11,7 @@ Everything runs through `make`. Run `make help` to list the targets. You can wor
 
 ### On your machine
 
-You need Rust 1.85 or newer. Adapter work also needs Node.js (LTS) and Python 3.10+ with [uv](https://docs.astral.sh/uv/).
+You need Rust 1.85 or newer. Adapter work also needs the toolchain for that adapter's language: Node.js (LTS) and Python 3.10+ with [uv](https://docs.astral.sh/uv/) for the existing adapters, or Go and a JDK for the Go and Java adapters.
 
 ```sh
 make tools   # one-off: installs cargo-deny and cargo-fuzz
@@ -36,6 +36,9 @@ make docker-check   # run the PR checks in the container
 | `crates/authloom-crypto` | Hashing, token generation, constant-time operations, secrets |
 | `adapters/node` | Node.js / TypeScript bindings (napi-rs) |
 | `adapters/python` | Python bindings (PyO3) |
+| `adapters/go` | Go bindings (UniFFI) |
+| `adapters/java` | Java bindings (JNI) |
+| `adapters/rust` | Idiomatic Rust SDK over `authloom-core` |
 | `conformance/` | Black-box test suite every adapter must pass |
 | `docs/` | This site |
 

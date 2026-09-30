@@ -9,6 +9,9 @@ flowchart TB
         direction LR
         node["<b>Node / TypeScript</b><br/>napi-rs"]
         python["<b>Python</b><br/>PyO3"]
+        go["<b>Go</b><br/>UniFFI"]
+        java["<b>Java</b><br/>JNI"]
+        rust["<b>Rust</b><br/>native SDK"]
         more["<b>Future languages</b>"]
     end
 
@@ -21,12 +24,12 @@ flowchart TB
         core --> crypto
     end
 
-    node & python & more --> boundary --> core
+    node & python & go & java & rust & more --> boundary --> core
 
     classDef adapter fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e
     classDef port fill:#fef3c7,stroke:#d97706,color:#78350f
     classDef engine fill:#ede9fe,stroke:#7c3aed,color:#3b0764,stroke-width:2px
-    class node,python,more adapter
+    class node,python,go,java,rust,more adapter
     class boundary port
     class core,crypto engine
     style adapters fill:transparent,stroke:#0284c7,stroke-dasharray:5 4
@@ -74,7 +77,7 @@ flowchart TB
 
 The colours are the same in both diagrams: blue for adapters, amber for ports, purple for the core and green for the infrastructure that adapters talk to. Click any diagram to enlarge it.
 
-Everything outside the hexagon is an **adapter**: the Node, Python and future-language bindings plug into those ports, and framework integrations such as Express or FastAPI sit a layer further out again. Adapters translate between the host language's ecosystem and the core's ports — they never make auth decisions of their own.
+Everything outside the hexagon is an **adapter**: the Node, Python, Go, Java, Rust and future-language bindings plug into those ports, and framework integrations such as Express or FastAPI sit a layer further out again. Adapters translate between the host language's ecosystem and the core's ports — they never make auth decisions of their own.
 
 The benefit of drawing the boundary this way is that the core has exactly one implementation of the rules, and adapters are interchangeable, testable in isolation, and can't drift from each other on security-relevant behaviour.
 

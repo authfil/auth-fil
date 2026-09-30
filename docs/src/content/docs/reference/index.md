@@ -10,6 +10,8 @@ The API reference is generated from the source code, including signatures and do
 | Rust | The workspace crates | rustdoc |
 | TypeScript | `adapters/node/index.d.ts`, which napi-rs generates | TypeDoc |
 | Python | The `authloom` package and its `.pyi` stubs | griffe |
+| Go | The UniFFI-generated Go bindings | godoc |
+| Java | The JNI bindings' Javadoc comments | Javadoc |
 
 Most public items are written in Rust. Their `///` doc comments flow into all three references, so each item is documented once. See [writing API docs](../guides/contributing/#writing-api-docs).
 

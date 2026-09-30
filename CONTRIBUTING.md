@@ -10,7 +10,7 @@ Thanks for helping out. Authloom is an auth library, so a subtle bug here become
 
 ## Development setup
 
-You'll need Rust 1.85 or newer (edition 2024). For adapter work you'll also need Node.js (LTS) and/or Python 3.10+. If you don't want to install those, `make docker-shell` gives you a container that has all of them.
+You'll need Rust 1.85 or newer (edition 2024). For adapter work you'll also need Node.js (LTS), Python 3.10+, Go and/or a JDK, depending on which adapter you're touching. If you don't want to install those, `make docker-shell` gives you a container that has all of them.
 
 ```sh
 make tools   # one-off: installs cargo-deny and cargo-fuzz
