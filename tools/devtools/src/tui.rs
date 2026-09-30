@@ -14,6 +14,9 @@ use crate::{git, naming};
 /// Commits touching more lines than this prompt the author to consider splitting.
 const LARGE_COMMIT_LINES: usize = 400;
 
+/// Issue numbers are appended to this to link the `Refs:` footer.
+const ISSUES_URL: &str = "https://github.com/authloom/auth-loom/issues";
+
 pub fn branch() -> Result<(), String> {
     let issue = CustomType::<u32>::new("Issue number:")
         .with_help_message("Every branch starts from an issue. Open one first if needed.")
@@ -260,7 +263,7 @@ fn build_message(
         footers.push(format!("BREAKING CHANGE: {}", note.trim()));
     }
     if let Some(issue) = issue {
-        footers.push(format!("Refs: #{issue}"));
+        footers.push(format!("Refs: {ISSUES_URL}/{issue}"));
     }
     if !footers.is_empty() {
         message.push_str("\n\n");
@@ -332,7 +335,7 @@ mod tests {
             "feat(core)!: rename verify to verify_password\n\n\
              The old name was ambiguous.\n\n\
              BREAKING CHANGE: `verify` is now `verify_password`.\n\
-             Refs: #12"
+             Refs: https://github.com/authloom/auth-loom/issues/12"
         );
         assert_eq!(conventional::lint(&message, Mode::Strict), Ok(()));
     }

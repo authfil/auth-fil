@@ -139,7 +139,7 @@ type(scope): description
 
 Optional body explaining why the change was needed.
 
-Optional footers, e.g. BREAKING CHANGE: ... or Refs: #12
+Optional footers, e.g. BREAKING CHANGE: ... or Refs: https://github.com/authloom/auth-loom/issues/12
 ```
 
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore` or `revert` (see the table above).
@@ -174,7 +174,7 @@ Run **`make commit`** instead of `git commit` for a guided prompt. It:
 - lists the staged files grouped by scope, and warns when a commit spans unrelated areas or is very large;
 - suggests the type from your branch name and the scope from the staged files;
 - checks the header as you type;
-- adds `Refs: #<issue>` from your branch name.
+- adds a `Refs:` footer linking the issue from your branch name, e.g. `Refs: https://github.com/authloom/auth-loom/issues/12`.
 
 Run `make lint-commits` to check your branch's commits the same way CI does.
 
