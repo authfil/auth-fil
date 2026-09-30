@@ -1,0 +1,38 @@
+# Local development environment. Usually driven through the Makefile:
+#   make docker-shell   interactive shell with every toolchain
+#   make docker-check   run the PR checks in the container
+#   make docker-docs    serve the docsite on http://localhost:4321
+
+x-dev: &dev
+  build:
+    context: .
+    target: dev
+    args:
+      USER_UID: ${UID:-1000}
+      USER_GID: ${GID:-1000}
+  image: authloom-dev
+  working_dir: /workspace
+  volumes:
+    - .:/workspace
+    # Kept in named volumes so container builds never clash with host builds.
+    - cargo-registry:/usr/local/cargo/registry
+    - target:/workspace/target
+
+services:
+  dev:
+    <<: *dev
+    stdin_open: true
+    tty: true
+
+  docs:
+    <<: *dev
+    profiles: [docs]
+    command: make docs-serve
+    environment:
+      DOCS_HOST: 0.0.0.0
+    ports:
+      - "4321:4321"
+
+volumes:
+  cargo-registry:
+  target:
