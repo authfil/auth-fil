@@ -5,6 +5,9 @@ members = [
     "crates/authloom-crypto",
     "adapters/node",
     "adapters/python",
+    "adapters/go",
+    "adapters/java",
+    "adapters/rust",
     "tools/devtools",
 ]
 

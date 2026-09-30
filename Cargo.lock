@@ -21,6 +21,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "authloom-go"
+version = "0.1.0"
+dependencies = [
+ "authloom-core",
+]
+
+[[package]]
+name = "authloom-java"
+version = "0.1.0"
+dependencies = [
+ "authloom-core",
+]
+
+[[package]]
 name = "authloom-node"
 version = "0.1.0"
 dependencies = [
@@ -29,6 +43,13 @@ dependencies = [
 
 [[package]]
 name = "authloom-python"
+version = "0.1.0"
+dependencies = [
+ "authloom-core",
+]
+
+[[package]]
+name = "authloom-rust"
 version = "0.1.0"
 dependencies = [
  "authloom-core",
