@@ -19,7 +19,7 @@ Security issues must not be reported publicly. See `SECURITY.md` in the reposito
 
 ## Branches, pull requests and commits
 
-- Every change starts with an issue. Branches and pull request titles are named `ISSUE-XXXX/TYPE/short-descriptive-title`, for example `ISSUE-0001/FEATURE/adding-python-adaptor-X-endpoint`.
+- Every change starts with an issue. Branches are named `ISSUE-XXXX/TYPE/short-descriptive-title`, for example `ISSUE-0001/FEATURE/adding-python-adaptor-X-endpoint`. Pull request titles are Conventional Commits, for example `feat(python): add the X endpoint`.
 - Every commit follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), such as `feat(core): rotate the session ID on privilege change`, and makes one logical change.
 - `make branch` and `make commit` walk you through both. `make hooks` checks commit messages as you commit, and CI checks them on every pull request.
 

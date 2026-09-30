@@ -1,4 +1,4 @@
-//! Branch and pull request names: `ISSUE-0001/FEATURE/short-descriptive-title`.
+//! Branch names: `ISSUE-0001/FEATURE/short-descriptive-title`.
 
 use crate::conventional::TYPES;
 

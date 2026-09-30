@@ -216,6 +216,17 @@ pub fn lint(message: &str, mode: Mode) -> Result<(), Vec<String>> {
     }
 }
 
+/// Check a pull request title. It becomes the squash commit header on
+/// `main`, so it follows the same header rules as a commit.
+pub fn lint_title(title: &str) -> Result<(), Vec<String>> {
+    let errors = lint_header(title);
+    if errors.is_empty() {
+        Ok(())
+    } else {
+        Err(errors)
+    }
+}
+
 fn lint_header(header: &str) -> Vec<String> {
     let mut errors = Vec::new();
 
@@ -305,6 +316,13 @@ mod tests {
         ok("feat(python)!: rename verify to verify_password");
         ok("docs: explain PKCE in the OAuth guide");
         ok("feat(core): add OAuth state parameter");
+    }
+
+    #[test]
+    fn pull_request_titles_follow_the_header_rules() {
+        assert_eq!(lint_title("feat(core): add session rotation"), Ok(()));
+        assert!(lint_title("ISSUE-0001/FEATURE/add-session-rotation").is_err());
+        assert!(lint_title("feat(core): Add session rotation").is_err());
     }
 
     #[test]
