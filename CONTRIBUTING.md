@@ -58,7 +58,10 @@ A PR for a security-relevant feature without a threat model and matching tests w
 
 ## Testing expectations
 
-- **Unit tests** for every function that makes a decision.
+**Every feature needs functional and integration tests that exercise its logic end to end.** Unit tests are valuable, but they often skip corners to pass: mocks encode the author's assumptions, so a unit test can confirm a false assumption instead of catching it. End-to-end tests drive the real flow through the real components (for example a full login, session, rotation and expiry sequence through the core's public API and then through an adapter), so wrong assumptions fail.
+
+- **Integration and functional tests are required for every feature.** Add them to an existing suite when the feature fits one, or introduce a new suite when it doesn't. Don't bypass the public API, and don't stub the component under test or the collaborators it depends on. A feature whose only tests are unit tests isn't covered.
+- **Unit tests** for every function that makes a decision. Keep them as a supplement to the end-to-end tests, never a replacement.
 - **Property tests** ([proptest](https://docs.rs/proptest)) for state machines such as session lifecycles, OAuth flows and MFA state.
 - **Fuzz targets** ([cargo-fuzz](https://rust-fuzz.github.io/book/cargo-fuzz.html)) for every parser of untrusted input: tokens, JWTs, cookies, OAuth callbacks, SAML.
 - **Conformance tests** for any behaviour visible through an adapter. Add the case to `conformance/` once and every adapter runs it.
@@ -190,7 +193,7 @@ Add an **AI assistance** section to the pull request (the template has one) that
 
 - **What was produced.** Say which parts of the change the agent wrote or substantially shaped, and which agent and model.
 - **Why it's the right change.** Give the reasoning for each non-trivial decision, not a restatement of the diff. Say what alternatives were considered and why they were rejected.
-- **Evidence.** Back each decision with something checkable: a link to the spec section (RFC, NIST, W3C, OWASP) or ASVS requirement, a failing-then-passing test, a benchmark, compiler or clippy output, or the output of `make check` and `make deny`. Agent confidence or a plausible-sounding explanation is not evidence.
+- **Evidence.** Back each decision with something checkable: an end-to-end test that exercises it, a link to the spec section (RFC, NIST, W3C, OWASP) or ASVS requirement, a failing-then-passing test, a benchmark, compiler or clippy output, or the output of `make check` and `make deny`. Agent confidence or a plausible-sounding explanation is not evidence.
 - **Knock-on effects.** State what the change resolves and what it introduces for the repo going forward: new dependencies, public API or conformance changes, behaviour adapters must now match, maintenance burden, anything that makes later work harder. If there are none, say you checked and how.
 
 ### Rules

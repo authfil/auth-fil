@@ -25,7 +25,7 @@ Closes #
 
 ## Testing
 
-<!-- What did you test, and how? Unit tests, property tests, fuzz targets, conformance cases. -->
+<!-- What did you test, and how? Integration/functional tests are required for every feature (say which suite they're in); unit tests, property tests, fuzz targets and conformance cases supplement them. -->
 
 ## AI assistance
 
@@ -41,6 +41,7 @@ Closes #
 - [ ] `make check` passes (fmt, clippy, tests)
 - [ ] `make deny` passes (dependency advisories and licences)
 - [ ] Commits are atomic and follow Conventional Commits (`make lint-commits`)
+- [ ] Features have end-to-end functional/integration tests, in an existing or new suite
 - [ ] Public API items have doc comments
 - [ ] New/changed behaviour has a conformance test if it's visible through an adapter
 - [ ] Threat model and attack-based tests added, if security-relevant
