@@ -1,6 +1,6 @@
-# Contributing to Authloom
+# Contributing to Authfil
 
-Thanks for helping out. Authloom is an auth library, so a subtle bug here becomes a vulnerability in every app that uses it. The workflow below is stricter than most projects for that reason. It isn't meant to put anyone off, and small, careful contributions are very welcome.
+Thanks for helping out. Authfil is an auth library, so a subtle bug here becomes a vulnerability in every app that uses it. The workflow below is stricter than most projects for that reason. It isn't meant to put anyone off, and small, careful contributions are very welcome.
 
 ## Before you start
 
@@ -25,8 +25,8 @@ A pull request must pass `make check` and `make deny` before review. `make help`
 
 | Change | Location |
 |---|---|
-| Any security decision (validation, expiry, comparison, policy, access checks) | `crates/authloom-core` |
-| Cryptographic primitives and secret handling | `crates/authloom-crypto` |
+| Any security decision (validation, expiry, comparison, policy, access checks) | `crates/authfil-core` |
+| Cryptographic primitives and secret handling | `crates/authfil-crypto` |
 | Converting between a host language and the core | `adapters/<language>` |
 | Behaviour every adapter must share | `conformance/` |
 
@@ -53,12 +53,15 @@ A PR for a security-relevant feature without a threat model and matching tests w
 - **Secure by default.** Every option that weakens security must be off by default and have a name that says what it does (e.g. `allow_insecure_http_cookies`).
 - **Fail closed.** If a check can't complete, the answer is deny.
 - **Don't reveal whether an account exists.** Use generic error messages and keep timing consistent for lookups by user.
-- **Keep the core free of I/O.** `authloom-core` must not open sockets or files, read the clock, or generate its own randomness. Those come in as inputs.
-- **No `unsafe`** in `authloom-core` or `authloom-crypto`. Both crates `#![forbid(unsafe_code)]`.
+- **Keep the core free of I/O.** `authfil-core` must not open sockets or files, read the clock, or generate its own randomness. Those come in as inputs.
+- **No `unsafe`** in `authfil-core` or `authfil-crypto`. Both crates `#![forbid(unsafe_code)]`.
 
 ## Testing expectations
 
-- **Unit tests** for every function that makes a decision.
+**Every feature needs functional and integration tests that exercise its logic end to end.** Unit tests are valuable, but they often skip corners to pass: mocks encode the author's assumptions, so a unit test can confirm a false assumption instead of catching it. End-to-end tests drive the real flow through the real components (for example a full login, session, rotation and expiry sequence through the core's public API and then through an adapter), so wrong assumptions fail.
+
+- **Integration and functional tests are required for every feature.** Add them to an existing suite when the feature fits one, or introduce a new suite when it doesn't. Don't bypass the public API, and don't stub the component under test or the collaborators it depends on. A feature whose only tests are unit tests isn't covered.
+- **Unit tests** for every function that makes a decision. Keep them as a supplement to the end-to-end tests, never a replacement.
 - **Property tests** ([proptest](https://docs.rs/proptest)) for state machines such as session lifecycles, OAuth flows and MFA state.
 - **Fuzz targets** ([cargo-fuzz](https://rust-fuzz.github.io/book/cargo-fuzz.html)) for every parser of untrusted input: tokens, JWTs, cookies, OAuth callbacks, SAML.
 - **Conformance tests** for any behaviour visible through an adapter. Add the case to `conformance/` once and every adapter runs it.
@@ -76,7 +79,7 @@ The short version:
 ## Adding a new language adapter
 
 1. Open an issue proposing the language and binding approach (e.g. napi-rs, PyO3, UniFFI, a C ABI).
-2. Create `adapters/<language>/` with a thin binding over `authloom-core`.
+2. Create `adapters/<language>/` with a thin binding over `authfil-core`.
 3. Validate every value that crosses the FFI boundary. Treat anything from the host language as untrusted.
 4. Make it pass the whole conformance suite. An adapter that fails even one security case isn't released.
 5. Add framework integrations (e.g. Express, FastAPI) as separate, thin layers on top.
@@ -139,7 +142,7 @@ type(scope): description
 
 Optional body explaining why the change was needed.
 
-Optional footers, e.g. BREAKING CHANGE: ... or Refs: https://github.com/authloom/auth-loom/issues/12
+Optional footers, e.g. BREAKING CHANGE: ... or Refs: https://github.com/authfil/auth-fil/issues/12
 ```
 
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore` or `revert` (see the table above).
@@ -174,9 +177,36 @@ Run **`make commit`** instead of `git commit` for a guided prompt. It:
 - lists the staged files grouped by scope, and warns when a commit spans unrelated areas or is very large;
 - suggests the type from your branch name and the scope from the staged files;
 - checks the header as you type;
-- adds a `Refs:` footer linking the issue from your branch name, e.g. `Refs: https://github.com/authloom/auth-loom/issues/12`.
+- adds a `Refs:` footer linking the issue from your branch name, e.g. `Refs: https://github.com/authfil/auth-fil/issues/12`.
 
 Run `make lint-commits` to check your branch's commits the same way CI does.
+
+## Contributing with AI coding agents
+
+Using an AI coding agent (Claude Code, Copilot, Cursor and similar) is fine. What matters is that a human understands and can defend every line they submit. In an auth library, code nobody can explain is a liability, however it was written.
+
+You are the author of anything you submit. "The agent wrote it" is not a justification, and review will treat the change exactly as if you had typed it.
+
+### What the pull request must show
+
+Add an **AI assistance** section to the pull request (the template has one) that covers:
+
+- **What was produced.** Say which parts of the change the agent wrote or substantially shaped, and which agent and model.
+- **Why it's the right change.** Give the reasoning for each non-trivial decision, not a restatement of the diff. Say what alternatives were considered and why they were rejected.
+- **Evidence.** Back each decision with something checkable: an end-to-end test that exercises it, a link to the spec section (RFC, NIST, W3C, OWASP) or ASVS requirement, a failing-then-passing test, a benchmark, compiler or clippy output, or the output of `make check` and `make deny`. Agent confidence or a plausible-sounding explanation is not evidence.
+- **Knock-on effects.** State what the change resolves and what it introduces for the repo going forward: new dependencies, public API or conformance changes, behaviour adapters must now match, maintenance burden, anything that makes later work harder. If there are none, say you checked and how.
+
+### Rules
+
+- **Verify, don't trust.** Agents invent APIs, crate features, spec clauses and citations. Open every link and confirm every cited requirement says what is claimed.
+- **Security-relevant code needs more scrutiny, not less.** The threat model and attack-based tests in [the feature workflow](#the-feature-workflow) must come from your own analysis. An agent can help draft them, but you must confirm each threat is real and each test fails without the defence.
+- **No unreviewed dependencies.** An agent adding a crate, especially a crypto one, triggers the same issue-and-discussion rule as a human doing so. See [Dependencies](#dependencies).
+- **No secrets in prompts.** Never paste credentials, private keys or unpublished vulnerability details into an agent. Security fixes follow [SECURITY.md](SECURITY.md) and stay out of third-party tools.
+- **Keep it atomic.** Agents tend to make sweeping, mixed changes. Split them into atomic commits as described in [Commits](#commits) and keep the pull request to one concern.
+- **Add a `Co-Authored-By:` trailer** naming the agent to every commit it substantially produced, e.g. `Co-Authored-By: Claude <noreply@anthropic.com>`. This lets reviewers isolate AI-produced commits and start the conversation about why the implementation is right. Leave it off commits you wrote yourself, and off purely mechanical repo upkeep (renames, config, scaffolding) that contains no implementation decisions. Disclosure in the pull request description is still required.
+- **Don't leave agent scaffolding behind.** Remove scratch files, speculative abstractions, unrequested refactors and comments that narrate the change.
+
+A pull request that can't explain its decisions with evidence, or whose author can't answer review questions about the code, will be closed and can be reopened once it can.
 
 ## Architecture decisions
 

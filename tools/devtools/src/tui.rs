@@ -15,7 +15,7 @@ use crate::{git, naming};
 const LARGE_COMMIT_LINES: usize = 400;
 
 /// Issue numbers are appended to this to link the `Refs:` footer.
-const ISSUES_URL: &str = "https://github.com/authloom/auth-loom/issues";
+const ISSUES_URL: &str = "https://github.com/authfil/auth-fil/issues";
 
 pub fn branch() -> Result<(), String> {
     let issue = CustomType::<u32>::new("Issue number:")
@@ -335,7 +335,7 @@ mod tests {
             "feat(core)!: rename verify to verify_password\n\n\
              The old name was ambiguous.\n\n\
              BREAKING CHANGE: `verify` is now `verify_password`.\n\
-             Refs: https://github.com/authloom/auth-loom/issues/12"
+             Refs: https://github.com/authfil/auth-fil/issues/12"
         );
         assert_eq!(conventional::lint(&message, Mode::Strict), Ok(()));
     }

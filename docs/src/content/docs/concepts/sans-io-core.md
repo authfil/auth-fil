@@ -1,9 +1,9 @@
 ---
 title: The sans-IO core
-description: Why authloom-core never does I/O, and how inputs and effects keep the rules the same in every language.
+description: Why authfil-core never does I/O, and how inputs and effects keep the rules the same in every language.
 ---
 
-`authloom-core` never does I/O itself. It doesn't open sockets or files, read the clock or generate randomness. Every security decision lives here, and nowhere else.
+`authfil-core` never does I/O itself. It doesn't open sockets or files, read the clock or generate randomness. Every security decision lives here, and nowhere else.
 
 ## Inputs
 

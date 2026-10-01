@@ -1,4 +1,4 @@
-//! Contributor tooling for Authloom.
+//! Contributor tooling for Authfil.
 //!
 //! One place for the repository's branch and commit conventions, used by
 //! the interactive prompts (`make branch`, `make commit`), the commit-msg

@@ -25,7 +25,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Build devtools
-        run: cargo build --quiet --package authloom-devtools
+        run: cargo build --quiet --package authfil-devtools
 
       # The title is passed through the environment, never interpolated into
       # the script, because it is attacker-controlled input.

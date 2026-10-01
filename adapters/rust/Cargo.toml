@@ -1,13 +1,13 @@
 [package]
-name = "authloom-rust"
-description = "Idiomatic Rust SDK for Authloom, for apps that use authloom-core directly without an FFI boundary."
+name = "authfil-rust"
+description = "Idiomatic Rust SDK for Authfil, for apps that use authfil-core directly without an FFI boundary."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 publish = false
 
 [dependencies]
-authloom-core.workspace = true
+authfil-core.workspace = true
 
 [lints]
 workspace = true

@@ -1,6 +1,6 @@
 ---
 title: Research resources
-description: The standards, books, labs and projects Authloom is built from.
+description: The standards, books, labs and projects Authfil is built from.
 ---
 
 Every feature starts from a spec and an attack, not from someone's opinion. This page collects the sources. The [roadmap](../roadmap/) lists which ones apply to each phase.

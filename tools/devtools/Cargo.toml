@@ -1,5 +1,5 @@
 [package]
-name = "authloom-devtools"
+name = "authfil-devtools"
 description = "Contributor tooling: branch naming, Conventional Commits and git hooks."
 version.workspace = true
 edition.workspace = true

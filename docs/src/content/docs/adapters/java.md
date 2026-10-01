@@ -1,6 +1,6 @@
 ---
 title: Java
-description: Java bindings for Authloom, built with JNI.
+description: Java bindings for Authfil, built with JNI.
 ---
 
 :::caution[Not ready yet]

@@ -9,7 +9,7 @@ The API reference is generated from the source code, including signatures and do
 |---|---|---|
 | Rust | The workspace crates | rustdoc |
 | TypeScript | `adapters/node/index.d.ts`, which napi-rs generates | TypeDoc |
-| Python | The `authloom` package and its `.pyi` stubs | griffe |
+| Python | The `authfil` package and its `.pyi` stubs | griffe |
 | Go | The UniFFI-generated Go bindings | godoc |
 | Java | The JNI bindings' Javadoc comments | Javadoc |
 

@@ -1,6 +1,6 @@
 ---
 title: Roadmap
-description: The seven-phase plan for building Authloom, from crypto foundations to enterprise SSO.
+description: The seven-phase plan for building Authfil, from crypto foundations to enterprise SSO.
 ---
 
 The project is built in seven phases. Each one can ship on its own and depends only on the phases before it.
@@ -115,7 +115,7 @@ Acting as an OAuth/OIDC provider is the hardest feature on the list. Leave it un
 | Device authorization flow | Sign-in on CLIs and TVs, phishing of the user code | RFC 8628 |
 | OIDC provider mode | Client registration, consent, introspection, revocation, publishing discovery and JWKS | RFC 7662, RFC 7009, OpenID conformance suite |
 
-**Milestone:** Authloom acts as the OIDC provider for a second app and passes the OpenID Foundation conformance tests.
+**Milestone:** Authfil acts as the OIDC provider for a second app and passes the OpenID Foundation conformance tests.
 
 ## Phase 7: Enterprise features
 

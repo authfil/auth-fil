@@ -1,6 +1,6 @@
-//! Idiomatic Rust SDK for Authloom.
+//! Idiomatic Rust SDK for Authfil.
 //!
 //! Unlike the other adapters, there's no FFI boundary to cross: this crate
-//! wraps `authloom-core`'s ports in an ergonomic Rust API for apps (e.g.
-//! Axum, Actix) that use Authloom directly. No security decisions are made
+//! wraps `authfil-core`'s ports in an ergonomic Rust API for apps (e.g.
+//! Axum, Actix) that use Authfil directly. No security decisions are made
 //! here.
