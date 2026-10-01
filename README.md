@@ -1,4 +1,4 @@
-# Authloom
+# Authfil
 
 **An open-source authentication and authorization library, written once in Rust and usable from any language.**
 
@@ -8,7 +8,7 @@
 
 Auth is the part of an application where one small mistake costs the most. Right now every language ecosystem rebuilds it from scratch, and each rebuild brings its own session fixation bugs, timing leaks, weak token handling and OAuth mistakes.
 
-Authloom aims to fix that by:
+Authfil aims to fix that by:
 
 - **Writing the security logic once.** A single Rust core holds every security decision: password hashing, session rules, token validation, OAuth state, MFA enforcement and access checks.
 - **Letting every language hook in.** Thin adapters for Node.js, Python and more expose that core through each language's native idioms and web frameworks.
@@ -35,8 +35,8 @@ flowchart TB
 
     subgraph engine["Rust engine"]
         direction TB
-        core["<b>authloom-core</b><br/>sans-IO state machines<br/>policy · access checks"]
-        crypto["<b>authloom-crypto</b><br/>Argon2id · tokens<br/>constant-time · zeroize"]
+        core["<b>authfil-core</b><br/>sans-IO state machines<br/>policy · access checks"]
+        crypto["<b>authfil-crypto</b><br/>Argon2id · tokens<br/>constant-time · zeroize"]
         core --> crypto
     end
 
@@ -59,7 +59,7 @@ The core never does I/O itself. The adapter passes in a request, the current tim
 sequenceDiagram
     participant App as Web framework
     participant Adapter as Language adapter
-    participant Core as authloom-core
+    participant Core as authfil-core
     participant Store as App database
 
     App->>Adapter: incoming request
@@ -82,8 +82,8 @@ This means:
 
 | Area | State |
 |---|---|
-| `authloom-core`, `authloom-crypto` | Crates created with their module docs and `#![forbid(unsafe_code)]`. No functionality yet. |
-| Adapters (Node, Python, Go, Java, Rust) | Crates created and wired to `authloom-core`. No bindings yet. |
+| `authfil-core`, `authfil-crypto` | Crates created with their module docs and `#![forbid(unsafe_code)]`. No functionality yet. |
+| Adapters (Node, Python, Go, Java, Rust) | Crates created and wired to `authfil-core`. No bindings yet. |
 | Conformance suite | Planned from Phase 2. [conformance/](conformance/) only has a README describing the contract. |
 | Tooling | `make` task runner, dev container, `make branch` / `make commit` helpers and git hooks. |
 | CI | Format, clippy, tests on Linux/macOS/Windows, API docs, cargo-deny, Conventional Commit checks, docs deploy and release-please. |
@@ -92,16 +92,16 @@ This means:
 ## Repository layout
 
 ```
-auth-loom/
+auth-fil/
 ├── crates/
-│   ├── authloom-core/     # Sans-IO core: state machines, policy, effects
-│   └── authloom-crypto/   # Hashing, token generation, constant-time ops, secrets
+│   ├── authfil-core/      # Sans-IO core: state machines, policy, effects
+│   └── authfil-crypto/    # Hashing, token generation, constant-time ops, secrets
 ├── adapters/
 │   ├── node/              # Node.js / TypeScript bindings (napi-rs)
 │   ├── python/            # Python bindings (PyO3)
 │   ├── go/                # Go bindings (UniFFI)
 │   ├── java/              # Java bindings (JNI)
-│   └── rust/              # Idiomatic Rust SDK over authloom-core
+│   └── rust/              # Idiomatic Rust SDK over authfil-core
 ├── conformance/           # Shared black-box test suite every adapter must pass
 ├── tools/devtools/        # Branch, commit and hook tooling behind `make branch`, `make commit`, `make hooks`
 ├── .githooks/             # pre-commit, commit-msg and pre-push hooks

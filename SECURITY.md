@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Authloom is in early development and hasn't made a stable release yet. Security fixes go to the `main` branch.
+Authfil is in early development and hasn't made a stable release yet. Security fixes go to the `main` branch.
 
 ## Reporting a vulnerability
 

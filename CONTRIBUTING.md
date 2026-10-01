@@ -1,6 +1,6 @@
-# Contributing to Authloom
+# Contributing to Authfil
 
-Thanks for helping out. Authloom is an auth library, so a subtle bug here becomes a vulnerability in every app that uses it. The workflow below is stricter than most projects for that reason. It isn't meant to put anyone off, and small, careful contributions are very welcome.
+Thanks for helping out. Authfil is an auth library, so a subtle bug here becomes a vulnerability in every app that uses it. The workflow below is stricter than most projects for that reason. It isn't meant to put anyone off, and small, careful contributions are very welcome.
 
 ## Before you start
 
@@ -25,8 +25,8 @@ A pull request must pass `make check` and `make deny` before review. `make help`
 
 | Change | Location |
 |---|---|
-| Any security decision (validation, expiry, comparison, policy, access checks) | `crates/authloom-core` |
-| Cryptographic primitives and secret handling | `crates/authloom-crypto` |
+| Any security decision (validation, expiry, comparison, policy, access checks) | `crates/authfil-core` |
+| Cryptographic primitives and secret handling | `crates/authfil-crypto` |
 | Converting between a host language and the core | `adapters/<language>` |
 | Behaviour every adapter must share | `conformance/` |
 
@@ -53,8 +53,8 @@ A PR for a security-relevant feature without a threat model and matching tests w
 - **Secure by default.** Every option that weakens security must be off by default and have a name that says what it does (e.g. `allow_insecure_http_cookies`).
 - **Fail closed.** If a check can't complete, the answer is deny.
 - **Don't reveal whether an account exists.** Use generic error messages and keep timing consistent for lookups by user.
-- **Keep the core free of I/O.** `authloom-core` must not open sockets or files, read the clock, or generate its own randomness. Those come in as inputs.
-- **No `unsafe`** in `authloom-core` or `authloom-crypto`. Both crates `#![forbid(unsafe_code)]`.
+- **Keep the core free of I/O.** `authfil-core` must not open sockets or files, read the clock, or generate its own randomness. Those come in as inputs.
+- **No `unsafe`** in `authfil-core` or `authfil-crypto`. Both crates `#![forbid(unsafe_code)]`.
 
 ## Testing expectations
 
@@ -76,7 +76,7 @@ The short version:
 ## Adding a new language adapter
 
 1. Open an issue proposing the language and binding approach (e.g. napi-rs, PyO3, UniFFI, a C ABI).
-2. Create `adapters/<language>/` with a thin binding over `authloom-core`.
+2. Create `adapters/<language>/` with a thin binding over `authfil-core`.
 3. Validate every value that crosses the FFI boundary. Treat anything from the host language as untrusted.
 4. Make it pass the whole conformance suite. An adapter that fails even one security case isn't released.
 5. Add framework integrations (e.g. Express, FastAPI) as separate, thin layers on top.
@@ -139,7 +139,7 @@ type(scope): description
 
 Optional body explaining why the change was needed.
 
-Optional footers, e.g. BREAKING CHANGE: ... or Refs: https://github.com/authloom/auth-loom/issues/12
+Optional footers, e.g. BREAKING CHANGE: ... or Refs: https://github.com/authfil/auth-fil/issues/12
 ```
 
 - **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore` or `revert` (see the table above).
@@ -174,7 +174,7 @@ Run **`make commit`** instead of `git commit` for a guided prompt. It:
 - lists the staged files grouped by scope, and warns when a commit spans unrelated areas or is very large;
 - suggests the type from your branch name and the scope from the staged files;
 - checks the header as you type;
-- adds a `Refs:` footer linking the issue from your branch name, e.g. `Refs: https://github.com/authloom/auth-loom/issues/12`.
+- adds a `Refs:` footer linking the issue from your branch name, e.g. `Refs: https://github.com/authfil/auth-fil/issues/12`.
 
 Run `make lint-commits` to check your branch's commits the same way CI does.
 
