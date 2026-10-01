@@ -93,11 +93,11 @@ impl fmt::Display for Scope {
 pub const SCOPES: &[Scope] = &[
     Scope {
         name: "core",
-        description: "crates/authloom-core",
+        description: "crates/authfil-core",
     },
     Scope {
         name: "crypto",
-        description: "crates/authloom-crypto",
+        description: "crates/authfil-crypto",
     },
     Scope {
         name: "node",
@@ -153,8 +153,8 @@ pub const SCOPES: &[Scope] = &[
 /// commits that mix unrelated areas.
 pub fn scope_for_path(path: &str) -> &'static str {
     let prefixes = [
-        ("crates/authloom-core/", "core"),
-        ("crates/authloom-crypto/", "crypto"),
+        ("crates/authfil-core/", "core"),
+        ("crates/authfil-crypto/", "crypto"),
         ("adapters/node/", "node"),
         ("adapters/python/", "python"),
         ("adapters/go/", "go"),
@@ -391,7 +391,7 @@ mod tests {
 
     #[test]
     fn maps_paths_to_scopes() {
-        assert_eq!(scope_for_path("crates/authloom-core/src/lib.rs"), "core");
+        assert_eq!(scope_for_path("crates/authfil-core/src/lib.rs"), "core");
         assert_eq!(scope_for_path("adapters/python/src/lib.rs"), "python");
         assert_eq!(scope_for_path("README.md"), "docs");
         assert_eq!(scope_for_path("Cargo.lock"), "deps");
