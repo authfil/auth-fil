@@ -1,0 +1,12 @@
+[package]
+name = "authfil-core"
+description = "Sans-IO core of Authfil: auth state machines and security decisions, with no I/O."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+authfil-crypto.workspace = true
+
+[lints]
+workspace = true

@@ -1,6 +1,6 @@
 [package]
-name = "authloom-go"
-description = "Go bindings for Authloom (UniFFI)."
+name = "authfil-go"
+description = "Go bindings for Authfil (UniFFI)."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -10,7 +10,7 @@ publish = false
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-authloom-core.workspace = true
+authfil-core.workspace = true
 
 [lints]
 workspace = true

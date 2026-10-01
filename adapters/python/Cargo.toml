@@ -1,6 +1,6 @@
 [package]
-name = "authloom-python"
-description = "Python bindings for Authloom (PyO3)."
+name = "authfil-python"
+description = "Python bindings for Authfil (PyO3)."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -10,7 +10,7 @@ publish = false
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-authloom-core.workspace = true
+authfil-core.workspace = true
 
 [lints]
 workspace = true

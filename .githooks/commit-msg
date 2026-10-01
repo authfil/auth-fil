@@ -1,4 +1,4 @@
 #!/bin/sh
 # Rejects commit messages that don't follow Conventional Commits.
 # Installed with `make hooks`. CI runs the same check on every pull request.
-exec cargo run --quiet --package authloom-devtools -- lint-commit "$1"
+exec cargo run --quiet --package authfil-devtools -- lint-commit "$1"

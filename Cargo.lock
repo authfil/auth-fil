@@ -3,56 +3,56 @@
 version = 4
 
 [[package]]
-name = "authloom-core"
+name = "authfil-core"
 version = "0.1.0"
 dependencies = [
- "authloom-crypto",
+ "authfil-crypto",
 ]
 
 [[package]]
-name = "authloom-crypto"
+name = "authfil-crypto"
 version = "0.1.0"
 
 [[package]]
-name = "authloom-devtools"
+name = "authfil-devtools"
 version = "0.1.0"
 dependencies = [
  "inquire",
 ]
 
 [[package]]
-name = "authloom-go"
+name = "authfil-go"
 version = "0.1.0"
 dependencies = [
- "authloom-core",
+ "authfil-core",
 ]
 
 [[package]]
-name = "authloom-java"
+name = "authfil-java"
 version = "0.1.0"
 dependencies = [
- "authloom-core",
+ "authfil-core",
 ]
 
 [[package]]
-name = "authloom-node"
+name = "authfil-node"
 version = "0.1.0"
 dependencies = [
- "authloom-core",
+ "authfil-core",
 ]
 
 [[package]]
-name = "authloom-python"
+name = "authfil-python"
 version = "0.1.0"
 dependencies = [
- "authloom-core",
+ "authfil-core",
 ]
 
 [[package]]
-name = "authloom-rust"
+name = "authfil-rust"
 version = "0.1.0"
 dependencies = [
- "authloom-core",
+ "authfil-core",
 ]
 
 [[package]]

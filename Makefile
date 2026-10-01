@@ -1,4 +1,4 @@
-# Authloom task runner. Run `make` or `make help` to list targets.
+# Authfil task runner. Run `make` or `make help` to list targets.
 #
 # The same targets run on the host, inside the dev container and in CI, so
 # "works on my machine" and "passes CI" mean the same thing.
@@ -45,7 +45,7 @@ tools: ## Install the Rust dev tools used by other targets
 
 ##@ Contributing
 
-DEVTOOLS := $(CARGO) run --quiet --package authloom-devtools --
+DEVTOOLS := $(CARGO) run --quiet --package authfil-devtools --
 
 .PHONY: hooks
 hooks: ## Install the git hooks (pre-commit checks, commit message lint, pre-push checks)
@@ -169,7 +169,7 @@ docker-check: ## Run `make check` inside the dev container
 
 .PHONY: docker-ci
 docker-ci: ## Run the full CI pipeline in a clean image build
-	docker build --target ci -t authloom:ci .
+	docker build --target ci -t authfil:ci .
 
 .PHONY: docker-docs
 docker-docs: ## Serve the docsite from the container on http://localhost:4321

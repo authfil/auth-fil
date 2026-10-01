@@ -1,6 +1,6 @@
 [package]
-name = "authloom-java"
-description = "Java bindings for Authloom (JNI)."
+name = "authfil-java"
+description = "Java bindings for Authfil (JNI)."
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -10,7 +10,7 @@ publish = false
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-authloom-core.workspace = true
+authfil-core.workspace = true
 
 [lints]
 workspace = true
