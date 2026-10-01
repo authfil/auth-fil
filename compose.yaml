@@ -10,7 +10,7 @@ x-dev: &dev
     args:
       USER_UID: ${UID:-1000}
       USER_GID: ${GID:-1000}
-  image: authloom-dev
+  image: authfil-dev
   working_dir: /workspace
   volumes:
     - .:/workspace

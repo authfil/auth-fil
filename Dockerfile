@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 #
-# Authloom development and CI image. One toolchain for every language the
+# Authfil development and CI image. One toolchain for every language the
 # adapters target, so the conformance suite runs the same everywhere.
 #
 #   dev  - Rust + Node + Python toolchains, used by compose for local work
