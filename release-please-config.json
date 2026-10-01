@@ -3,18 +3,18 @@
   "release-type": "rust",
   "group-pull-request-title-pattern": "chore${scope}: release ${version}",
   "packages": {
-    "crates/authloom-core": {
-      "component": "authloom-core"
+    "crates/authfil-core": {
+      "component": "authfil-core"
     },
-    "crates/authloom-crypto": {
-      "component": "authloom-crypto"
+    "crates/authfil-crypto": {
+      "component": "authfil-crypto"
     }
   },
   "plugins": [
     {
       "type": "linked-versions",
-      "group-name": "authloom",
-      "components": ["authloom-core", "authloom-crypto"]
+      "group-name": "authfil",
+      "components": ["authfil-core", "authfil-crypto"]
     },
     "cargo-workspace"
   ],
