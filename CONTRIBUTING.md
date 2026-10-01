@@ -200,7 +200,7 @@ Add an **AI assistance** section to the pull request (the template has one) that
 - **No unreviewed dependencies.** An agent adding a crate, especially a crypto one, triggers the same issue-and-discussion rule as a human doing so. See [Dependencies](#dependencies).
 - **No secrets in prompts.** Never paste credentials, private keys or unpublished vulnerability details into an agent. Security fixes follow [SECURITY.md](SECURITY.md) and stay out of third-party tools.
 - **Keep it atomic.** Agents tend to make sweeping, mixed changes. Split them into atomic commits as described in [Commits](#commits) and keep the pull request to one concern.
-- **Don't add agent co-author trailers** unless the maintainers ask for them. Disclosure belongs in the pull request description, where reviewers will read it.
+- **Add a `Co-Authored-By:` trailer** naming the agent to every commit it substantially produced, e.g. `Co-Authored-By: Claude <noreply@anthropic.com>`. This lets reviewers isolate AI-produced commits and start the conversation about why the implementation is right. Leave it off commits you wrote yourself, and off purely mechanical repo upkeep (renames, config, scaffolding) that contains no implementation decisions. Disclosure in the pull request description is still required.
 - **Don't leave agent scaffolding behind.** Remove scratch files, speculative abstractions, unrequested refactors and comments that narrate the change.
 
 A pull request that can't explain its decisions with evidence, or whose author can't answer review questions about the code, will be closed and can be reopened once it can.

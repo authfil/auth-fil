@@ -31,7 +31,7 @@ Closes #
 
 <!-- Delete this section if no AI coding agent was used. See "Contributing with AI coding agents" in CONTRIBUTING.md. -->
 
-- Agent and model:
+- Agent and model (and the commits carrying a `Co-Authored-By:` trailer):
 - What it produced:
 - Why these decisions are right (with evidence: spec links, tests, command output):
 - What this resolves, and what it introduces for the repo going forward:
