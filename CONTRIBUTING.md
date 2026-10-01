@@ -178,6 +178,33 @@ Run **`make commit`** instead of `git commit` for a guided prompt. It:
 
 Run `make lint-commits` to check your branch's commits the same way CI does.
 
+## Contributing with AI coding agents
+
+Using an AI coding agent (Claude Code, Copilot, Cursor and similar) is fine. What matters is that a human understands and can defend every line they submit. In an auth library, code nobody can explain is a liability, however it was written.
+
+You are the author of anything you submit. "The agent wrote it" is not a justification, and review will treat the change exactly as if you had typed it.
+
+### What the pull request must show
+
+Add an **AI assistance** section to the pull request (the template has one) that covers:
+
+- **What was produced.** Say which parts of the change the agent wrote or substantially shaped, and which agent and model.
+- **Why it's the right change.** Give the reasoning for each non-trivial decision, not a restatement of the diff. Say what alternatives were considered and why they were rejected.
+- **Evidence.** Back each decision with something checkable: a link to the spec section (RFC, NIST, W3C, OWASP) or ASVS requirement, a failing-then-passing test, a benchmark, compiler or clippy output, or the output of `make check` and `make deny`. Agent confidence or a plausible-sounding explanation is not evidence.
+- **Knock-on effects.** State what the change resolves and what it introduces for the repo going forward: new dependencies, public API or conformance changes, behaviour adapters must now match, maintenance burden, anything that makes later work harder. If there are none, say you checked and how.
+
+### Rules
+
+- **Verify, don't trust.** Agents invent APIs, crate features, spec clauses and citations. Open every link and confirm every cited requirement says what is claimed.
+- **Security-relevant code needs more scrutiny, not less.** The threat model and attack-based tests in [the feature workflow](#the-feature-workflow) must come from your own analysis. An agent can help draft them, but you must confirm each threat is real and each test fails without the defence.
+- **No unreviewed dependencies.** An agent adding a crate, especially a crypto one, triggers the same issue-and-discussion rule as a human doing so. See [Dependencies](#dependencies).
+- **No secrets in prompts.** Never paste credentials, private keys or unpublished vulnerability details into an agent. Security fixes follow [SECURITY.md](SECURITY.md) and stay out of third-party tools.
+- **Keep it atomic.** Agents tend to make sweeping, mixed changes. Split them into atomic commits as described in [Commits](#commits) and keep the pull request to one concern.
+- **Don't add agent co-author trailers** unless the maintainers ask for them. Disclosure belongs in the pull request description, where reviewers will read it.
+- **Don't leave agent scaffolding behind.** Remove scratch files, speculative abstractions, unrequested refactors and comments that narrate the change.
+
+A pull request that can't explain its decisions with evidence, or whose author can't answer review questions about the code, will be closed and can be reopened once it can.
+
 ## Architecture decisions
 
 Significant design choices (a new crate, a change to the effect model, a new crypto dependency, a public API shape) are recorded as ADRs in [docs/src/content/docs/decisions/](docs/src/content/docs/decisions/). Propose one in your PR if your change makes such a decision.

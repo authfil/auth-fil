@@ -27,6 +27,15 @@ Closes #
 
 <!-- What did you test, and how? Unit tests, property tests, fuzz targets, conformance cases. -->
 
+## AI assistance
+
+<!-- Delete this section if no AI coding agent was used. See "Contributing with AI coding agents" in CONTRIBUTING.md. -->
+
+- Agent and model:
+- What it produced:
+- Why these decisions are right (with evidence: spec links, tests, command output):
+- What this resolves, and what it introduces for the repo going forward:
+
 ## Checklist
 
 - [ ] `make check` passes (fmt, clippy, tests)
@@ -36,3 +45,4 @@ Closes #
 - [ ] New/changed behaviour has a conformance test if it's visible through an adapter
 - [ ] Threat model and attack-based tests added, if security-relevant
 - [ ] ADR added under `docs/src/content/docs/decisions/`, if this is a significant design decision
+- [ ] I have read, verified and can explain every line, and every citation was checked, if an AI agent was used
