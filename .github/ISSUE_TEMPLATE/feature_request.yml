@@ -12,8 +12,8 @@ body:
     attributes:
       label: Component
       options:
-        - authloom-core
-        - authloom-crypto
+        - authfil-core
+        - authfil-crypto
         - Node adapter
         - Python adapter
         - Go adapter
@@ -58,7 +58,7 @@ body:
     id: security-relevant
     attributes:
       label: Is this security-relevant?
-      description: Any validation, expiry, comparison, policy or access-check logic belongs in authloom-core and needs a threat model.
+      description: Any validation, expiry, comparison, policy or access-check logic belongs in authfil-core and needs a threat model.
       options:
         - label: Yes — this will need a threat model doc and attack-based tests before merge.
         - label: No — this is adapter plumbing, tooling, or non-security behaviour.

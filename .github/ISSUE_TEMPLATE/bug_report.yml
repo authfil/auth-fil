@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to report a bug. **If this is a security vulnerability, please don't file it here** — use [private vulnerability reporting](https://github.com/authloom/auth-loom/security/advisories/new) instead, per [SECURITY.md](../../SECURITY.md).
+        Thanks for taking the time to report a bug. **If this is a security vulnerability, please don't file it here** — use [private vulnerability reporting](https://github.com/authfil/auth-fil/security/advisories/new) instead, per [SECURITY.md](../../SECURITY.md).
 
   - type: dropdown
     id: component
@@ -13,8 +13,8 @@ body:
       label: Component
       description: Where does the bug live? See CONTRIBUTING.md's "Where code goes" table if unsure.
       options:
-        - authloom-core
-        - authloom-crypto
+        - authfil-core
+        - authfil-crypto
         - Node adapter
         - Python adapter
         - Go adapter
