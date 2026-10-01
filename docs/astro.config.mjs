@@ -24,7 +24,7 @@ const has = (source) => existsSync(path.join(repoRoot, source));
 
 export default defineConfig({
   // Set by the GitHub Pages workflow; unset locally.
-  site: process.env.DOCS_SITE_URL,
+  site: process.env.DOCS_SITE_URL || undefined,
   base: process.env.DOCS_BASE || '/',
   trailingSlash: 'always',
   // Pages that moved when the site was reorganised, so old links keep working.
