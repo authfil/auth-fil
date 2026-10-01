@@ -8,16 +8,16 @@ The repository has one Cargo workspace. Every directory has one job, and the dir
 ## Layout
 
 ```
-auth-loom/
+auth-fil/
 ├── crates/
-│   ├── authloom-core/      # Sans-IO core: state machines, policy, effects
-│   └── authloom-crypto/    # Hashing, tokens, constant-time comparison, secrets
+│   ├── authfil-core/       # Sans-IO core: state machines, policy, effects
+│   └── authfil-crypto/     # Hashing, tokens, constant-time comparison, secrets
 ├── adapters/
 │   ├── node/               # Node.js / TypeScript bindings (napi-rs)
 │   ├── python/             # Python bindings (PyO3)
 │   ├── go/                 # Go bindings (UniFFI)
 │   ├── java/               # Java bindings (JNI)
-│   └── rust/               # Idiomatic Rust SDK over authloom-core
+│   └── rust/               # Idiomatic Rust SDK over authfil-core
 ├── conformance/            # Black-box suite every adapter must pass
 ├── tools/devtools/         # make branch, make commit and the convention linters
 ├── docs/                   # This site (Starlight)
@@ -35,8 +35,8 @@ auth-loom/
 
 | Change | Directory | Commit scope |
 |---|---|---|
-| Any security decision: validation, expiry, comparison, policy, access checks | `crates/authloom-core/` | `core` |
-| Cryptographic primitives and secret handling | `crates/authloom-crypto/` | `crypto` |
+| Any security decision: validation, expiry, comparison, policy, access checks | `crates/authfil-core/` | `core` |
+| Cryptographic primitives and secret handling | `crates/authfil-crypto/` | `crypto` |
 | Converting between a host language and the core | `adapters/<language>/` | the language, for example `node` or `python` |
 | Behaviour every adapter must share | `conformance/` | `conformance` |
 | Contributor tooling and git hooks | `tools/devtools/`, `.githooks/` | `devtools` |
@@ -48,14 +48,14 @@ auth-loom/
 
 `make commit` suggests the scope from the files you've staged, using this same mapping.
 
-**Adapters don't make security decisions.** If adapter code sets a cookie flag, checks a token, compares a secret or decides a timeout, it belongs in `crates/authloom-core/` instead. See [how adapters work](../../adapters/).
+**Adapters don't make security decisions.** If adapter code sets a cookie flag, checks a token, compares a secret or decides a timeout, it belongs in `crates/authfil-core/` instead. See [how adapters work](../../adapters/).
 
 ## Naming
 
 | Thing | Convention | Example |
 |---|---|---|
-| Core crates | `crates/authloom-<name>/`, and the crate has the same name | `crates/authloom-crypto/` |
-| Adapters | `adapters/<language>/`, lowercase, and the crate is `authloom-<language>` | `adapters/go/` is `authloom-go` |
+| Core crates | `crates/authfil-<name>/`, and the crate has the same name | `crates/authfil-crypto/` |
+| Adapters | `adapters/<language>/`, lowercase, and the crate is `authfil-<language>` | `adapters/go/` is `authfil-go` |
 | Site pages | `docs/src/content/docs/<section>/<page>.md`, lowercase kebab-case | `concepts/sans-io-core.md` |
 | Threat models | `security/threat-models/<feature>.md` | `security/threat-models/sessions.md` |
 | Decision records | `decisions/NNNN-short-title.md`, numbered in order | `decisions/0001-sans-io-core.md` |
@@ -72,7 +72,7 @@ auth-loom/
 | Section | For |
 |---|---|
 | `get-started/` | The first pages a new reader needs |
-| `concepts/` | How Authloom works and why |
+| `concepts/` | How Authfil works and why |
 | `adapters/` | One page per language adapter |
 | `security/` | Threat models and security design |
 | `reference/` | Overview of the API reference; the rest is generated |

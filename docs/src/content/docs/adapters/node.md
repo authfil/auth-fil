@@ -1,6 +1,6 @@
 ---
 title: Node.js / TypeScript
-description: Node.js and TypeScript bindings for Authloom, built with napi-rs.
+description: Node.js and TypeScript bindings for Authfil, built with napi-rs.
 ---
 
 :::caution[Not ready yet]

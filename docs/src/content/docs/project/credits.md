@@ -1,6 +1,6 @@
 ---
 title: Credits
-description: The people and projects Authloom is built on.
+description: The people and projects Authfil is built on.
 ---
 
 ## Maintainers
@@ -13,7 +13,7 @@ Everyone who contributes code, reviews, documentation or security reports is lis
 
 ## Standing on the shoulders of
 
-Authloom's design draws heavily on work that others have shared openly:
+Authfil's design draws heavily on work that others have shared openly:
 
 - **[The Copenhagen Book](https://thecopenhagenbook.com/)** by pilcrow, the author of Lucia, for its implementation-focused guidance on sessions, tokens and verification flows.
 - **[OWASP](https://owasp.org/)** for the Application Security Verification Standard and the Cheat Sheet Series, which serve as our acceptance criteria.

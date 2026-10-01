@@ -1,6 +1,6 @@
 ---
 title: Python
-description: Python bindings for Authloom, built with PyO3.
+description: Python bindings for Authfil, built with PyO3.
 ---
 
 :::caution[Not ready yet]
@@ -15,7 +15,7 @@ The first framework integration planned is FastAPI, in Phase 2 of the [roadmap](
 
 ## API reference
 
-The Python API reference is generated from the `authloom` package and its `.pyi` stubs, and appears under [API reference](../../reference/) once the adapter exposes an API.
+The Python API reference is generated from the `authfil` package and its `.pyi` stubs, and appears under [API reference](../../reference/) once the adapter exposes an API.
 
 ## Security
 

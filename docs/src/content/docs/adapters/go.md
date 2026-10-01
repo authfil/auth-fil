@@ -1,6 +1,6 @@
 ---
 title: Go
-description: Go bindings for Authloom, built with UniFFI.
+description: Go bindings for Authfil, built with UniFFI.
 ---
 
 :::caution[Not ready yet]

@@ -1,9 +1,9 @@
 ---
 title: Sponsors
-description: Supporting Authloom's development and security work.
+description: Supporting Authfil's development and security work.
 ---
 
-Authloom doesn't have any sponsors yet.
+Authfil doesn't have any sponsors yet.
 
 ## What sponsorship pays for
 

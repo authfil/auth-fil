@@ -1,6 +1,6 @@
 # Documentation rules and standards
 
-This is the rulebook for everything written about Authloom: pages on the docsite, doc comments in the code, and the Markdown files at the repository root. Pull requests that change documentation are reviewed against it.
+This is the rulebook for everything written about Authfil: pages on the docsite, doc comments in the code, and the Markdown files at the repository root. Pull requests that change documentation are reviewed against it.
 
 For an auth library, documentation is part of the security surface. A misleading example gets copied into production. So these rules are strict about accuracy and secure defaults, and relaxed about everything else.
 
@@ -44,7 +44,7 @@ The dev server also regenerates the API reference whenever you change the Rust, 
 - Use British English (organisation, behaviour, licence as a noun).
 - Write for a developer who knows their web framework but isn't an auth expert.
 - Use plain words and short sentences. Prefer "use" to "utilise" and "so" to "in order to".
-- Address the reader as "you". Refer to the project as "Authloom" or "we".
+- Address the reader as "you". Refer to the project as "Authfil" or "we".
 - Use the active voice: "the core rotates the session ID", not "the session ID is rotated".
 
 **Structure**
@@ -87,7 +87,7 @@ Readers copy examples. Every example must be safe to copy.
 ```md
 ---
 title: Session management
-description: How Authloom creates, rotates and revokes server-side sessions.
+description: How Authfil creates, rotates and revokes server-side sessions.
 ---
 ```
 
@@ -99,7 +99,7 @@ description: How Authloom creates, rotates and revokes server-side sessions.
 | Section | For |
 |---|---|
 | `get-started/` | The first pages a new reader needs |
-| `concepts/` | How Authloom works and why, one idea per page |
+| `concepts/` | How Authfil works and why, one idea per page |
 | `adapters/` | An overview, then one page per language adapter |
 | `security/` | Threat models and security design |
 | `reference/` | Overview of the API reference; the rest is generated |

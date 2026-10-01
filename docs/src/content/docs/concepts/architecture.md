@@ -3,7 +3,7 @@ title: Architecture
 description: How the sans-IO core, the crypto crate and the language adapters fit together in a hexagonal (ports-and-adapters) architecture.
 ---
 
-Authloom is one Rust engine with a thin adapter for each language. The engine makes every authentication and authorization decision. The adapters only translate.
+Authfil is one Rust engine with a thin adapter for each language. The engine makes every authentication and authorization decision. The adapters only translate.
 
 ```mermaid
 flowchart TB
@@ -21,8 +21,8 @@ flowchart TB
 
     subgraph engine["Rust engine"]
         direction TB
-        core["<b>authloom-core</b><br/>sans-IO state machines<br/>policy · access checks"]
-        crypto["<b>authloom-crypto</b><br/>Argon2id · tokens<br/>constant-time · zeroize"]
+        core["<b>authfil-core</b><br/>sans-IO state machines<br/>policy · access checks"]
+        crypto["<b>authfil-crypto</b><br/>Argon2id · tokens<br/>constant-time · zeroize"]
         core --> crypto
     end
 
@@ -40,7 +40,7 @@ flowchart TB
 
 ## Hexagonal architecture
 
-Authloom follows a ports-and-adapters (hexagonal) architecture. `authloom-core` is the hexagon: it owns every auth decision and exposes **ports** — the inputs it needs (a request, the current time, random bytes, stored records) and the effects it produces (set this cookie, store this session hash, deny). It never does I/O and never calls into a specific database or HTTP stack itself.
+Authfil follows a ports-and-adapters (hexagonal) architecture. `authfil-core` is the hexagon: it owns every auth decision and exposes **ports** — the inputs it needs (a request, the current time, random bytes, stored records) and the effects it produces (set this cookie, store this session hash, deny). It never does I/O and never calls into a specific database or HTTP stack itself.
 
 ```mermaid
 flowchart TB
@@ -52,7 +52,7 @@ flowchart TB
     end
 
     inbound(["<b>Inbound port</b><br/>request · current time<br/>random bytes<br/>stored records"])
-    core{{"<b>authloom-core</b><br/>state machines · policy<br/>access checks"}}
+    core{{"<b>authfil-core</b><br/>state machines · policy<br/>access checks"}}
     outbound(["<b>Outbound port</b><br/>effects: set cookie<br/>store hash · redirect · deny"])
 
     subgraph driven["Driven adapters · carry out effects"]

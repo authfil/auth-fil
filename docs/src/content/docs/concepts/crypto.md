@@ -1,9 +1,9 @@
 ---
 title: The crypto crate
-description: The cryptographic building blocks in authloom-crypto, and the defaults they use.
+description: The cryptographic building blocks in authfil-crypto, and the defaults they use.
 ---
 
-`authloom-crypto` wires vetted crates together with safe defaults. It contains no novel cryptography.
+`authfil-crypto` wires vetted crates together with safe defaults. It contains no novel cryptography.
 
 | Building block | What it does |
 |---|---|

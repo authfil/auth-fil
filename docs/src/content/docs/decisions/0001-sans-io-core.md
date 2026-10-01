@@ -7,11 +7,11 @@ description: All security decisions live in a Rust core that performs no I/O.
 
 ## Context
 
-Authloom targets several languages. If each adapter implemented parts of the auth logic, such as cookie flags, timeouts or token checks, those implementations would drift apart. Each would be a separate place for vulnerabilities to appear.
+Authfil targets several languages. If each adapter implemented parts of the auth logic, such as cookie flags, timeouts or token checks, those implementations would drift apart. Each would be a separate place for vulnerabilities to appear.
 
 ## Decision
 
-`authloom-core` makes every security decision and performs no I/O. Adapters pass in requests, the current time, random bytes and stored records. The core returns effects that the adapter carries out.
+`authfil-core` makes every security decision and performs no I/O. Adapters pass in requests, the current time, random bytes and stored records. The core returns effects that the adapter carries out.
 
 ## Alternatives
 
