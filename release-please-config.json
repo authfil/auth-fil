@@ -13,7 +13,7 @@
   "plugins": [
     {
       "type": "linked-versions",
-      "group-name": "authfil",
+      "groupName": "authfil",
       "components": ["authfil-core", "authfil-crypto"]
     },
     "cargo-workspace"
