@@ -18,8 +18,8 @@ license = "MIT"
 
 # Internal crates carry a version as well as a path so they can be published.
 [workspace.dependencies]
-authfil-core = { path = "crates/authfil-core", version = "0.1.0" }
-authfil-crypto = { path = "crates/authfil-crypto", version = "0.1.0" }
+authfil-core = { path = "crates/authfil-core", version = "0.1.1" }
+authfil-crypto = { path = "crates/authfil-crypto", version = "0.1.1" }
 
 [workspace.lints.rust]
 unsafe_op_in_unsafe_fn = "deny"
