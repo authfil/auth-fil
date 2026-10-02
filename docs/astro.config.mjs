@@ -23,7 +23,7 @@ const sources = {
 const has = (source) => existsSync(path.join(repoRoot, source));
 
 export default defineConfig({
-  // Set by the GitHub Pages workflow; unset locally.
+  // Set by the GitHub Pages workflow (https://authfil.com); unset locally.
   site: process.env.DOCS_SITE_URL || undefined,
   base: process.env.DOCS_BASE || '/',
   trailingSlash: 'always',
