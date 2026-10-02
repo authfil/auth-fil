@@ -4,10 +4,24 @@
   "group-pull-request-title-pattern": "chore${scope}: release ${version}",
   "packages": {
     "crates/authfil-core": {
-      "component": "authfil-core"
+      "component": "authfil-core",
+      "extra-files": [
+        {
+          "type": "toml",
+          "path": "/Cargo.toml",
+          "jsonpath": "$.workspace.dependencies.authfil-core.version"
+        }
+      ]
     },
     "crates/authfil-crypto": {
-      "component": "authfil-crypto"
+      "component": "authfil-crypto",
+      "extra-files": [
+        {
+          "type": "toml",
+          "path": "/Cargo.toml",
+          "jsonpath": "$.workspace.dependencies.authfil-crypto.version"
+        }
+      ]
     }
   },
   "plugins": [
@@ -15,8 +29,7 @@
       "type": "linked-versions",
       "groupName": "authfil",
       "components": ["authfil-core", "authfil-crypto"]
-    },
-    "cargo-workspace"
+    }
   ],
   "changelog-sections": [
     { "type": "feat", "section": "Features" },
